@@ -8,7 +8,7 @@ begin
         Rake::AutoprefixerTasks.new(*config(app))
       end
 
-      initializer :setup_autoprefixer, group: :all do |app|
+      initializer :setup_autoprefixer, :group => :all do |app|
         AutoprefixerRails.install(app.assets, *config(app))
       end
 
@@ -16,7 +16,7 @@ begin
       def config(app)
         file    = app.root.join('config/autoprefixer.yml')
         options = file.exist? ? YAML.load_file(file).symbolize_keys : { }
-        options = { browsers: nil }.merge(options)
+        options = { :browsers => nil }.merge(options)
         postcss = { }
         postcss[:safe] = true if options.delete(:safe)
         [options.delete(:browsers), options, postcss]

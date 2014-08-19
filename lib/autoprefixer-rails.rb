@@ -6,7 +6,7 @@ module AutoprefixerRails
   # Add prefixes to `css`. See `Processor#process` for options.
   def self.process(css, opts = {})
     browsers = opts.delete(:browsers)
-    options  = opts.has_key?(:cascade) ? { cascade: opts.delete(:cascade) } : {}
+    options  = opts.has_key?(:cascade) ? { :cascade => opts.delete(:cascade) } : {}
     processor(browsers, options).process(css, opts)
   end
 
@@ -24,8 +24,8 @@ module AutoprefixerRails
   end
 end
 
-require_relative 'autoprefixer-rails/result'
-require_relative 'autoprefixer-rails/version'
-require_relative 'autoprefixer-rails/processor'
+require File.expand_path('../autoprefixer-rails/result', __FILE__)
+require File.expand_path('../autoprefixer-rails/version', __FILE__)
+require File.expand_path('../autoprefixer-rails/processor', __FILE__)
 
-require_relative 'autoprefixer-rails/railtie' if defined?(Rails)
+require File.expand_path('../autoprefixer-rails/railtie', __FILE__) if defined?(Rails)

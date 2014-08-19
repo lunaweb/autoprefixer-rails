@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require File.expand_path('../spec_helper', __FILE__)
 
 describe AutoprefixerRails do
   before :all do
@@ -11,7 +11,7 @@ describe AutoprefixerRails do
   end
 
   it "process CSS for selected browsers" do
-    result = AutoprefixerRails.process(@css, browsers: ['chrome 25'])
+    result = AutoprefixerRails.process(@css, :browsers => ['chrome 25'])
     expect(result.css).to eq "a {\n" +
                              "    -webkit-transition: all 1s;\n" +
                              "            transition: all 1s\n" +
@@ -19,25 +19,25 @@ describe AutoprefixerRails do
   end
 
   it "generates source map" do
-    result = AutoprefixerRails.process(@css, map: true)
+    result = AutoprefixerRails.process(@css, :map => true)
     expect(result.map).to be_a(String)
   end
 
   it "convert options" do
     result = AutoprefixerRails.process @css,
-      from: 'a.css',
-      map:  { sources_content: true }
+      :from => 'a.css',
+      :map =>  { :sources_content => true }
     expect(result.map).to include('"sourcesContent":["a {')
   end
 
-  it "uses file name in syntax errors", not_jruby: true do
+  it "uses file name in syntax errors", :not_jruby => true do
     expect {
-      AutoprefixerRails.process('a {', from: 'a.css')
+      AutoprefixerRails.process('a {', :from => 'a.css')
     }.to raise_error(/a.css:/)
   end
 
   it "has safe mode" do
-    expect(AutoprefixerRails.process('a {', safe: true).css).to eql('a {}')
+    expect(AutoprefixerRails.process('a {', :safe => true).css).to eql('a {}')
   end
 
   it "shows debug" do
@@ -61,7 +61,7 @@ describe AutoprefixerRails do
                         "}\n"
     end
 
-    it "shows file name from Sprockets", not_jruby: true do
+    it "shows file name from Sprockets", :not_jruby => true do
       expect { @assets['wrong.css'] }.to raise_error(/wrong.css:/)
     end
 

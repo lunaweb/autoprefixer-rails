@@ -1,13 +1,13 @@
-require_relative 'spec_helper'
+require File.expand_path('../spec_helper', __FILE__)
 
-describe CssController, type: :controller do
+describe CssController, :type => :controller do
   before :all do
     cache = Rails.root.join('tmp/cache')
     cache.rmtree if cache.exist?
   end
 
   it "integrates with Rails and Sass" do
-    get :test, file: 'sass'
+    get :test, :file => 'sass'
     expect(response).to be_success
     expect(response.body).to eq "a {\n" +
                                 "  -webkit-transition: all 1s;\n" +
@@ -15,7 +15,7 @@ describe CssController, type: :controller do
   end
 
   it "has safe mode" do
-    get :test, file: 'wrong'
+    get :test, :file => 'wrong'
     expect(response).to be_success
     expect(response.body).to eq "a {\n}"
   end
