@@ -1,13 +1,16 @@
 ﻿# Autoprefixer Rails [![Build Status](https://travis-ci.org/ai/autoprefixer-rails.png)](https://travis-ci.org/ai/autoprefixer-rails)
 
-<img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
+<img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
-[Autoprefixer](https://github.com/ai/autoprefixer) is a tool
-to parse CSS and add vendor prefixes to CSS rules using values
-from the [Can I Use](http://caniuse.com/). This gem provides
-Ruby and Ruby on Rails integration with this JavaScript tool.
+[Autoprefixer] is a tool to parse CSS and add vendor prefixes to CSS rules
+using values from the [Can I Use]. This gem provides Ruby and Ruby on Rails
+integration with this JavaScript tool.
 
-Sponsored by [Evil Martians](http://evilmartians.com/).
+Sponsored by [Evil Martians].
+
+[Evil Martians]: http://evilmartians.com/
+[Autoprefixer]:  https://github.com/postcss/autoprefixer
+[Can I Use]:     http://caniuse.com/
 
 ## Usage
 
@@ -17,6 +20,12 @@ Add the `autoprefixer-rails` gem to your `Gemfile`:
 
 ```ruby
 gem "autoprefixer-rails"
+```
+
+Clear your cache:
+
+```sh
+rake tmp:clear
 ```
 
 Write your CSS (Sass, Stylus, LESS) rules without vendor prefixes
@@ -48,7 +57,7 @@ support to add vendor prefixes automatically using the Asset Pipeline:
 }
 ```
 
-If you need to specify browsers for your project, you can save them
+If you need to specify browsers for your Rails project, you can save them
 to `config/autoprefixer.yml`. See [browser section] in Autoprefixer docs.
 
 ```yaml
@@ -68,7 +77,7 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 * Latest [Firefox ESR] is a 24 version.
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
-[browser section]: https://github.com/ai/autoprefixer#browsers
+[browser section]: https://github.com/postcss/autoprefixer#browsers
 [Firefox ESR]:     http://www.mozilla.org/en/firefox/organizations/faq/
 
 ### Sprockets
@@ -155,6 +164,9 @@ result = AutoprefixerRails.process(css, {
 result.map #=> Source map from main.sass to main.min.css
 ```
 
-See all options in [PostCSS docs](https://github.com/ai/postcss#source-map-1).
-AutoprefixerRails will convert Ruby style to JS style, so you can use
-`map: { sources_content: true }` instead of camelcase `sourcesContent`.
+See all options in [PostCSS docs]. AutoprefixerRails will convert Ruby style
+to JS style, so you can use `map: { sources_content: true }`
+instead of camelcase `sourcesContent`.
+
+[PostCSS docs]: https://github.com/postcss/postcss#source-map-1
+

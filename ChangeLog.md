@@ -1,3 +1,17 @@
+## 3.1 “Satyameva Jayate”
+* Do not remove comments from prefixed values (by Eitan Rousso).
+* Allow Safari 6.1 to use final Flexbox spec (by John Kreitlow).
+* Fix `filter` value in `transition` in Webkits.
+* Show greetings in Rake task if your browsers don’t require any prefixes.
+* Add `<=` and `<` browsers requirement (by Andreas Lind).
+
+## 3.0.1
+* Update Can I Use data.
+
+## 3.0 “Liberté, Égalité, Fraternité”
+* All methods now receive browsers as options key, not separated argument.
+* GNU format for syntax error messages from PostCSS 2.2.
+
 ## 2.2.20140804
 * Fix UTF-8 support in inline source maps.
 * Allow to miss `from` and `to` options in inline source maps.
@@ -26,7 +40,7 @@
 
 ## 2.0 “Hongik Ingan”
 * Based on PostCSS 1.0.
-  See [options changes](https://github.com/ai/postcss/releases/tag/1.0.0).
+  See [options changes](https://github.com/postcss/postcss/releases/tag/1.0.0).
 * Restore visual cascade after declaration removing.
 * Prefix declareation in `@supports` at-rule conditions.
 * Add all browsers from Can I Use: `ie_mob`, `and_chr`, `and_ff`,
